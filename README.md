@@ -24,7 +24,7 @@ This project implements a basic calculator in Java capable of performing simple 
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/mcosta3tc/basic-java-calculator/
+   git clone https://github.com/mcosta3tc/basic-java-calculator.git
    
 2. Navigate to the project directory:
 
