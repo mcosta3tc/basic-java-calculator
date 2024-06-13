@@ -23,6 +23,7 @@ public class Calculator implements CalculatorInterface {
      */
     @Override
     public ResultRecord calculate(int firstNumber, int secondNumber, String operator) {
+        validateOperator(operator);
         return switch (operator) {
             case "+" -> new ResultRecord(firstNumber + secondNumber);
             case "-" -> new ResultRecord(firstNumber - secondNumber);
@@ -31,9 +32,21 @@ public class Calculator implements CalculatorInterface {
                 if (secondNumber == 0) {
                     throw new IllegalArgumentException("Division by 0 is impossible");
                 }
-                yield new ResultRecord(firstNumber / secondNumber);
+                yield new ResultRecord((double) firstNumber / secondNumber);
             }
             default -> throw new IllegalStateException("Unexpected value: " + operator);
         };
+    }
+
+
+    /**
+     * Verify if the provided operator is one of : +, -, *, /
+     *
+     * @param operator the operator provided by the calculate method
+     */
+    private void validateOperator(String operator) {
+        if (!operator.matches("[+\\-*/]")) {
+            throw new IllegalArgumentException("Invalid operator: " + operator);
+        }
     }
 }
