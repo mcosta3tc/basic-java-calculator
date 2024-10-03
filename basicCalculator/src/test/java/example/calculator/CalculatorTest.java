@@ -14,9 +14,15 @@ public class CalculatorTest {
         Assertions.assertEquals(2, sumResult.result());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test()
     public void testValidateOperator() {
-        String string = "d";
-        calculator.calculate(2, 3, string);
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.calculate(2, 3, "invalidOperator"));
+        Assertions.assertEquals("Invalid operator: invalidOperator", exception.getMessage());
+    }
+
+    @Test()
+    public void testDivideByZero() {
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.calculate(2, 0, "/"));
+        Assertions.assertEquals("Division by 0 is impossible", exception.getMessage());
     }
 }
