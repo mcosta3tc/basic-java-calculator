@@ -14,6 +14,24 @@ public class CalculatorTest {
         Assertions.assertEquals(2, sumResult.result());
     }
 
+    @Test
+    public void testCalculateMinus() {
+        ResultRecord sumResult = calculator.calculate(1, 1, "-");
+        Assertions.assertEquals(0, sumResult.result());
+    }
+
+    @Test
+    public void testCalculateMultiply() {
+        ResultRecord sumResult = calculator.calculate(4, 5, "*");
+        Assertions.assertEquals(20, sumResult.result());
+    }
+
+    @Test
+    public void testCalculateDivide() {
+        ResultRecord sumResult = calculator.calculate(1, 1, "/");
+        Assertions.assertEquals(1, sumResult.result());
+    }
+
     @Test()
     public void testValidateOperator() {
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.calculate(2, 3, "invalidOperator"));
