@@ -13,4 +13,10 @@ public class CalculatorTest {
         ResultRecord sumResult = calculator.calculate(1, 1, "+");
         Assertions.assertEquals(2, sumResult.result());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testValidateOperator() {
+        String string = "d";
+        calculator.calculate(2, 3, string);
+    }
 }
